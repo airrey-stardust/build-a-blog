@@ -4,11 +4,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:launchcode@localhost:8889/build-a-blog'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:root@localhost:3306/build-a-blog'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
-
-
+### changed to port 3306 ###
+### used XAMPP instead of MAMP ####
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
@@ -62,5 +62,5 @@ def new_post():
     return render_template('newpost.html', title='New Entry')
 
 if  __name__ == "__main__":
-app.run()
+    app.run()
 
